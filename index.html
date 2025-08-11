@@ -31,6 +31,43 @@
       --bs-accordion-btn-bg: transparent;
       --bs-accordion-btn-padding-x: 0;
     }
+
+    #skills-accordion .accordion-button {
+      background-color: transparent;
+      border: none;
+      color: white;
+      padding-left: 0;
+      text-align: left;
+    }
+
+    #skills-accordion .accordion-button:hover {
+      color: #ccc;
+    }
+
+    #skills-accordion .accordion-button:not(.collapsed) {
+      background-color: transparent;
+      color: white;
+      box-shadow: none;
+    }
+
+    #skills-accordion .accordion-button::after {
+      filter: invert(1);
+      margin-left: 0.5rem;
+    }
+
+    #skills-accordion .accordion-item {
+      background-color: transparent;
+      border: none;
+    }
+
+    #skills-accordion .accordion-collapse {
+      border: none;
+    }
+
+    #skills-accordion .accordion-body {
+      padding-top: 0.5rem;
+      padding-bottom: 1rem;
+    }
   </style>
 </head>
 
@@ -152,29 +189,361 @@
     <section class="bg-dark py-5 text-light">
       <div class="container">
         <h3 class="mb-5 fs-1" id="skills">Services and Specialties</h3>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-          <h5 class="card-title text-light">Web Development</h5>
-          <h5 class="card-title text-light">Mobile Development</h5>
-          <h5 class="card-title text-light">SaaS Infrastructure</h5>
-          <h5 class="card-title text-light">Browser Extensions</h5>
-          <h5 class="card-title text-light">Browser Automation</h5>
-          <h5 class="card-title text-light">HubSpot Development</h5>
-          <h5 class="card-title text-light">Prototyping and MVPs</h5>
-          <h5 class="card-title text-light">Business Intelligence</h5>
-          <h5 class="card-title text-light">OpenAI ChatGPT Plugins</h5>
-          <h5 class="card-title text-light">Managing Offshore Teams</h5>
-          <h5 class="card-title text-light">Open Source Development</h5>
-          <h5 class="card-title text-light">Self-Financing Solutions</h5>
-          <h5 class="card-title text-light">Sales Ops, MarTech, CRMs</h5>
-          <h5 class="card-title text-light">RAG/AI Knowledge Systems</h5>
-          <h5 class="card-title text-light">EdTech and LMS Development</h5>
-          <h5 class="card-title text-light">DevOps and Internal Systems</h5>
-          <h5 class="card-title text-light">Mentoring and Hiring Tech Talent</h5>
-          <h5 class="card-title text-light">Custom and Dynamic Payment Plans</h5>
-          <h5 class="card-title text-light">Customer Dashboards and Reporting</h5>
-          <h5 class="card-title text-light">Tech-Enabling Service-Based Companies</h5>
-          <h5 class="card-title text-light">Website Design and WordPress Development</h5>
-          <h5 class="card-title text-light">Prop-tech and Automated Valuation Models</h5>
+        <div class="accordion accordion-flush" id="skills-accordion">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-web-dev" aria-expanded="false" aria-controls="skill-web-dev">
+                    Web Development
+                  </button>
+                </h2>
+                <div id="skill-web-dev" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Full-stack web application development using modern frameworks and technologies.
+                    <br><br><strong>Examples:</strong> E-commerce platforms, SaaS applications, corporate websites, web portals, progressive web apps
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-mobile-dev" aria-expanded="false" aria-controls="skill-mobile-dev">
+                    Mobile Development
+                  </button>
+                </h2>
+                <div id="skill-mobile-dev" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Native and cross-platform mobile app development for iOS and Android.
+                    <br><br><strong>Examples:</strong> Consumer apps, enterprise mobile solutions, fitness trackers, delivery apps, mobile games
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-saas" aria-expanded="false" aria-controls="skill-saas">
+                    SaaS Infrastructure
+                  </button>
+                </h2>
+                <div id="skill-saas" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Building scalable, multi-tenant SaaS platforms with robust authentication, billing, and monitoring.
+                    <br><br><strong>Examples:</strong> Subscription management systems, multi-tenant architectures, API gateways, microservices platforms
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-browser-ext" aria-expanded="false" aria-controls="skill-browser-ext">
+                    Browser Extensions
+                  </button>
+                </h2>
+                <div id="skill-browser-ext" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Custom browser extensions for Chrome, Firefox, and other browsers to enhance user experience.
+                    <br><br><strong>Examples:</strong> Productivity tools, ad blockers, password managers, shopping assistants, web scrapers
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-browser-auto" aria-expanded="false" aria-controls="skill-browser-auto">
+                    Browser Automation
+                  </button>
+                </h2>
+                <div id="skill-browser-auto" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Automated web testing, data extraction, and workflow automation using tools like Selenium and Puppeteer.
+                    <br><br><strong>Examples:</strong> Web scraping tools, automated testing suites, form fillers, data migration tools
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-hubspot" aria-expanded="false" aria-controls="skill-hubspot">
+                    HubSpot Development
+                  </button>
+                </h2>
+                <div id="skill-hubspot" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Custom HubSpot integrations, workflows, and CMS development for marketing and sales teams.
+                    <br><br><strong>Examples:</strong> Custom modules, API integrations, workflow automation, reporting dashboards, CMS themes
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-mvp" aria-expanded="false" aria-controls="skill-mvp">
+                    Prototyping and MVPs
+                  </button>
+                </h2>
+                <div id="skill-mvp" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Rapid development of minimum viable products to validate business ideas and secure funding.
+                    <br><br><strong>Examples:</strong> Proof of concepts, clickable prototypes, startup MVPs, product validation tools
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-bi" aria-expanded="false" aria-controls="skill-bi">
+                    Business Intelligence
+                  </button>
+                </h2>
+                <div id="skill-bi" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Data analytics, visualization, and reporting solutions to drive data-informed decision making.
+                    <br><br><strong>Examples:</strong> Analytics dashboards, KPI tracking systems, data warehouses, predictive analytics tools
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-chatgpt" aria-expanded="false" aria-controls="skill-chatgpt">
+                    OpenAI ChatGPT Plugins
+                  </button>
+                </h2>
+                <div id="skill-chatgpt" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Custom AI integrations and plugins leveraging OpenAI's GPT models for enhanced functionality.
+                    <br><br><strong>Examples:</strong> Chatbots, content generators, code assistants, customer support AI, document analyzers
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-offshore" aria-expanded="false" aria-controls="skill-offshore">
+                    Managing Offshore Teams
+                  </button>
+                </h2>
+                <div id="skill-offshore" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Experience in building, managing, and scaling distributed development teams across time zones.
+                    <br><br><strong>Examples:</strong> Team structuring, communication protocols, project management systems, quality assurance processes
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-opensource" aria-expanded="false" aria-controls="skill-opensource">
+                    Open Source Development
+                  </button>
+                </h2>
+                <div id="skill-opensource" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Contributing to and maintaining open source projects, building developer communities.
+                    <br><br><strong>Examples:</strong> Library development, framework contributions, developer tools, community management
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-financing" aria-expanded="false" aria-controls="skill-financing">
+                    Self-Financing Solutions
+                  </button>
+                </h2>
+                <div id="skill-financing" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Building revenue-generating features and systems that pay for themselves through efficiency gains.
+                    <br><br><strong>Examples:</strong> Automation tools, cost optimization systems, revenue enhancement features, efficiency platforms
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-salesops" aria-expanded="false" aria-controls="skill-salesops">
+                    Sales Ops, MarTech, CRMs
+                  </button>
+                </h2>
+                <div id="skill-salesops" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Implementing and optimizing sales operations tools, marketing technology, and CRM systems.
+                    <br><br><strong>Examples:</strong> Salesforce customization, marketing automation, lead scoring systems, sales analytics
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-rag" aria-expanded="false" aria-controls="skill-rag">
+                    RAG/AI Knowledge Systems
+                  </button>
+                </h2>
+                <div id="skill-rag" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Building retrieval-augmented generation systems and AI-powered knowledge management platforms.
+                    <br><br><strong>Examples:</strong> Document Q&A systems, knowledge bases, semantic search engines, AI assistants
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-edtech" aria-expanded="false" aria-controls="skill-edtech">
+                    EdTech and LMS Development
+                  </button>
+                </h2>
+                <div id="skill-edtech" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Educational technology platforms and learning management systems for schools and training programs.
+                    <br><br><strong>Examples:</strong> Online course platforms, student portals, assessment tools, virtual classrooms, certification systems
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-devops" aria-expanded="false" aria-controls="skill-devops">
+                    DevOps and Internal Systems
+                  </button>
+                </h2>
+                <div id="skill-devops" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Infrastructure automation, CI/CD pipelines, and internal tooling for development teams.
+                    <br><br><strong>Examples:</strong> Deployment pipelines, monitoring systems, infrastructure as code, internal developer platforms
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-mentoring" aria-expanded="false" aria-controls="skill-mentoring">
+                    Mentoring and Hiring Tech Talent
+                  </button>
+                </h2>
+                <div id="skill-mentoring" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Building engineering teams, technical interviewing, and mentoring developers for growth.
+                    <br><br><strong>Examples:</strong> Technical assessments, training programs, career development plans, team building strategies
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-payment" aria-expanded="false" aria-controls="skill-payment">
+                    Custom and Dynamic Payment Plans
+                  </button>
+                </h2>
+                <div id="skill-payment" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Flexible payment systems with usage-based billing, subscriptions, and custom pricing models.
+                    <br><br><strong>Examples:</strong> Tiered pricing systems, usage metering, payment gateways, billing automation, invoice generation
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-dashboards" aria-expanded="false" aria-controls="skill-dashboards">
+                    Customer Dashboards and Reporting
+                  </button>
+                </h2>
+                <div id="skill-dashboards" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Interactive dashboards and reporting tools for customers to track metrics and performance.
+                    <br><br><strong>Examples:</strong> Real-time analytics dashboards, custom report builders, data visualization tools, export features
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-tech-enabling" aria-expanded="false" aria-controls="skill-tech-enabling">
+                    Tech-Enabling Service-Based Companies
+                  </button>
+                </h2>
+                <div id="skill-tech-enabling" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Digital transformation for traditional service companies through custom software solutions.
+                    <br><br><strong>Examples:</strong> Client portals, booking systems, service management platforms, workflow automation
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-proptech" aria-expanded="false" aria-controls="skill-proptech">
+                    Prop-tech and Automated Valuation Models
+                  </button>
+                </h2>
+                <div id="skill-proptech" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Real estate technology solutions including property valuation algorithms and market analysis tools.
+                    <br><br><strong>Examples:</strong> Property valuation tools, market analysis platforms, listing management systems, investment calculators
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#skill-wordpress" aria-expanded="false" aria-controls="skill-wordpress">
+                    Website Design and WordPress Development
+                  </button>
+                </h2>
+                <div id="skill-wordpress" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
+                  <div class="accordion-body text-light opacity-75 ps-0">
+                    Custom website design and WordPress development for businesses and organizations.
+                    <br><br><strong>Examples:</strong> Corporate websites, e-commerce stores, membership sites, custom plugins, theme development
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
