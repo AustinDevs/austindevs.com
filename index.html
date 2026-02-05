@@ -1,691 +1,628 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Austin Devs</title>
-  <meta name="description" content="Fractional CTO Services">
-  <link rel="icon" href="./images/favicon.ico" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Austin Devs - Technical Co-Founder & Fractional CTO Services</title>
+  <meta name="description" content="Technical Co-Founder & Fractional CTO Services">
+  <link rel="icon" href="./images/favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            slate: {
+              850: '#1a2332',
+            }
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    .accordion-button:focus {
-      box-shadow: none;
+    .service-item {
+      transition: all 0.2s ease;
+    }
+    .service-item:hover {
+      color: #3b82f6;
+    }
+    .service-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .service-item.active .service-content {
+      max-height: 200px;
+    }
+    .service-item.active .service-icon {
+      transform: rotate(45deg);
+    }
+    .service-icon {
+      transition: transform 0.2s ease;
     }
 
-    .accordion-button:not(.collapsed)::after {
-      background-image: var(--bs-accordion-btn-icon);
+    /* Mobile accordion styles */
+    .section-accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+    }
+    .section-accordion.active .section-accordion-content {
+      max-height: 4000px;
+    }
+    .section-accordion .accordion-chevron {
+      transition: transform 0.3s ease;
+    }
+    .section-accordion.active .accordion-chevron {
+      transform: rotate(180deg);
     }
 
-    .accordion {
-      --bs-primary-bg-subtle: transparent;
-    }
-
-    .accordion-item {
-      --bs-accordion-bg: transparent;
-    }
-
-    .accordion-button {
-      --bs-accordion-btn-bg: transparent;
-      --bs-accordion-btn-padding-x: 0;
-    }
-
-    #skills-accordion .accordion-button {
-      background-color: transparent;
-      border: none;
-      color: white;
-      padding-left: 0;
-      text-align: left;
-    }
-
-    #skills-accordion .accordion-button:hover {
-      color: #ccc;
-    }
-
-    #skills-accordion .accordion-button:not(.collapsed) {
-      background-color: transparent;
-      color: white;
-      box-shadow: none;
-    }
-
-    #skills-accordion .accordion-button::after {
-      filter: invert(1);
-      margin-left: 0.5rem;
-    }
-
-    #skills-accordion .accordion-item {
-      background-color: transparent;
-      border: none;
-    }
-
-    #skills-accordion .accordion-collapse {
-      border: none;
-    }
-
-    #skills-accordion .accordion-body {
-      padding-top: 0.5rem;
-      padding-bottom: 1rem;
+    /* On desktop, always show content */
+    @media (min-width: 768px) {
+      .section-accordion-content {
+        max-height: none !important;
+        overflow: visible;
+      }
+      .section-accordion-toggle {
+        pointer-events: none;
+      }
+      .accordion-chevron {
+        display: none;
+      }
     }
   </style>
 </head>
+<body class="font-sans bg-slate-50 text-slate-800">
 
-<body>
-  <main>
-    <section class="bg-dark text-light py-5">
-      <div class="container d-flex justify-content-between align-items-center">
-        <div class="me-4">
-          <a href="/" class="text-light text-decoration-none"><h1>Austin Devs</h1></a>
-          <h2>Technical Co-Founder &amp; Fractional CTO Services</h2>
-        </div>
-        <a href="/" class="text-light text-decoration-none"><img src="./images/white_logo.webp" alt="logo" style="max-width: 100px;"></a>
+  <!-- Hero Section -->
+  <section class="min-h-[70vh] bg-slate-900 text-white flex items-center">
+    <div class="container mx-auto px-6 lg:px-12 py-20">
+      <div class="max-w-4xl">
+        <a href="/" class="inline-block mb-8">
+          <img src="./images/white_logo.webp" alt="Austin Devs" class="h-16 w-auto">
+        </a>
+        <h1 class="text-5xl lg:text-7xl font-light mb-6 tracking-tight">
+          Austin Devs
+        </h1>
+        <p class="text-2xl lg:text-3xl text-slate-300 font-light mb-8">
+          Technical Co-Founder & Fractional CTO Services
+        </p>
+        <a href="https://app.reclaim.ai/m/austindevs" target="_blank"
+           class="inline-block px-8 py-4 bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors">
+          Schedule a Conversation
+        </a>
       </div>
-    </section>
-    <section class="bg-light py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6">
-            <h1>What is a CTO?</h1>
-            <p>
-              A Chief Technology Officer (CTO) oversees an organization's technology needs, R&D,
-              and strategic investments to achieve objectives.
+    </div>
+  </section>
+
+  <!-- What is a CTO Section -->
+  <section class="py-12 md:py-24 bg-white section-accordion" id="cto-section">
+    <div class="container mx-auto px-6 lg:px-12">
+      <button class="section-accordion-toggle w-full flex items-center justify-between md:cursor-default" onclick="toggleSection('cto-section')">
+        <h2 class="text-3xl md:text-4xl font-light text-slate-900">What is a CTO?</h2>
+        <svg class="accordion-chevron w-6 h-6 text-slate-400 md:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+
+      <div class="section-accordion-content md:!max-h-none">
+        <div class="pt-8">
+          <div class="grid lg:grid-cols-2 gap-16">
+            <div>
+              <p class="text-lg text-slate-600 leading-relaxed">
+                A Chief Technology Officer (CTO) oversees an organization's technology needs, R&D,
+                and strategic investments to achieve objectives.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-2xl font-light mb-6 text-slate-900">Who benefits from a fractional CTO?</h3>
+              <p class="text-lg text-slate-600 leading-relaxed">
+                Startups and small businesses seeking technology leadership, mid-sized companies
+                looking to enhance their technology strategies, and larger organizations in
+                need of specialized expertise or temporary support for specific projects.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-12 md:mt-20 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="group">
+              <h4 class="text-lg font-medium text-slate-900 mb-3">Cost-effectiveness</h4>
+              <p class="text-slate-600">Access high-level strategic guidance without the expense of a full-time executive.</p>
+            </div>
+            <div class="group">
+              <h4 class="text-lg font-medium text-slate-900 mb-3">Specialized expertise</h4>
+              <p class="text-slate-600">Diverse industry experience and knowledge in technology strategy and implementation.</p>
+            </div>
+            <div class="group">
+              <h4 class="text-lg font-medium text-slate-900 mb-3">Scalability</h4>
+              <p class="text-slate-600">Adapt to your company's changing technology needs and growth trajectory.</p>
+            </div>
+            <div class="group">
+              <h4 class="text-lg font-medium text-slate-900 mb-3">Strategic planning</h4>
+              <p class="text-slate-600">Develop technology roadmaps aligned with your business goals and objectives.</p>
+            </div>
+            <div class="group">
+              <h4 class="text-lg font-medium text-slate-900 mb-3">Leadership</h4>
+              <p class="text-slate-600">Provide mentorship and guidance for existing development teams.</p>
+            </div>
+            <div class="group">
+              <h4 class="text-lg font-medium text-slate-900 mb-3">Objective perspective</h4>
+              <p class="text-slate-600">Fresh perspectives and objective insights for technology-related decisions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-12 md:py-24 bg-slate-900 text-white section-accordion" id="services-section">
+    <div class="container mx-auto px-6 lg:px-12">
+      <button class="section-accordion-toggle w-full flex items-center justify-between md:cursor-default" onclick="toggleSection('services-section')">
+        <h2 class="text-3xl md:text-4xl font-light">Services & Specialties</h2>
+        <svg class="accordion-chevron w-6 h-6 text-slate-400 md:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+
+      <div class="section-accordion-content md:!max-h-none">
+        <div class="pt-8 md:pt-16">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-2">
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Web Development</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Full-stack web application development using modern frameworks. E-commerce platforms, SaaS applications, corporate websites, web portals.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Mobile Development</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Native and cross-platform mobile app development for iOS and Android. Consumer apps, enterprise mobile solutions, fitness trackers.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">SaaS Infrastructure</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Building scalable, multi-tenant SaaS platforms with robust authentication, billing, and monitoring.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Browser Extensions</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Custom browser extensions for Chrome, Firefox, and other browsers. Productivity tools, shopping assistants.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Browser Automation</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Automated web testing, data extraction, and workflow automation using Selenium and Puppeteer.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">HubSpot Development</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Custom HubSpot integrations, workflows, and CMS development for marketing and sales teams.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Prototyping & MVPs</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Rapid development of minimum viable products to validate business ideas and secure funding.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Business Intelligence</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Data analytics, visualization, and reporting solutions to drive data-informed decision making.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Practical AI Solutions</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Applying AI to solve real business problems. Custom integrations, workflow automation, intelligent assistants, and data-driven insights.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Managing Offshore Teams</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Building, managing, and scaling distributed development teams across time zones.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Open Source Development</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Contributing to and maintaining open source projects, building developer communities.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Self-Financing Solutions</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Building revenue-generating features and systems that pay for themselves through efficiency gains.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Sales Ops & CRMs</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Implementing and optimizing sales operations tools, marketing technology, and CRM systems.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">RAG/AI Knowledge Systems</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Building retrieval-augmented generation systems and AI-powered knowledge management platforms.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">EdTech & LMS</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Educational technology platforms and learning management systems for schools and training programs.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">DevOps & Internal Systems</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Infrastructure automation, CI/CD pipelines, and internal tooling for development teams.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Mentoring & Hiring</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Building engineering teams, technical interviewing, and mentoring developers for growth.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Custom Payment Plans</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Flexible payment systems with usage-based billing, subscriptions, and custom pricing models.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Customer Dashboards</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Interactive dashboards and reporting tools for customers to track metrics and performance.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Tech-Enabling Services</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Digital transformation for traditional service companies through custom software solutions.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">Prop-tech & AVMs</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Real estate technology solutions including property valuation algorithms and market analysis tools.
+              </div>
+            </div>
+
+            <div class="service-item cursor-pointer py-3 border-b border-slate-700" onclick="toggleService(this)">
+              <div class="flex items-center justify-between">
+                <span class="text-lg">WordPress Development</span>
+                <span class="service-icon text-slate-500">+</span>
+              </div>
+              <div class="service-content text-slate-400 text-sm pt-3">
+                Custom website design and WordPress development for businesses and organizations.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients Section -->
+  <section class="py-12 md:py-20 bg-slate-100 section-accordion" id="clients-section">
+    <div class="container mx-auto px-6 lg:px-12">
+      <button class="section-accordion-toggle w-full flex items-center justify-between md:justify-center md:cursor-default" onclick="toggleSection('clients-section')">
+        <h2 class="text-3xl md:text-4xl font-light text-slate-900 md:text-center">Clients, Partners & Projects</h2>
+        <svg class="accordion-chevron w-6 h-6 text-slate-400 md:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </button>
+
+      <div class="section-accordion-content md:!max-h-none">
+        <div class="pt-8 md:pt-12">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <!-- Austin Coding Academy -->
+            <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="./images/aca-logo.webp" alt="Austin Coding Academy" class="w-12 h-12 object-contain">
+                <div>
+                  <h3 class="font-semibold text-slate-900">Austin Coding Academy</h3>
+                  <span class="text-sm text-blue-600 font-medium">Acquired 2019</span>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm mb-4">Change Your Life With a New Career. Software Development Courses Offered In-Person and Online.</p>
+              <a href="https://austincodingacademy.com/" target="_blank" class="text-blue-600 font-medium text-sm hover:text-blue-700">Visit site &rarr;</a>
+            </div>
+
+            <!-- Zollege -->
+            <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="./images/zollege-logo.png" alt="Zollege" class="w-12 h-12 object-contain">
+                <div>
+                  <h3 class="font-semibold text-slate-900">Zollege</h3>
+                  <span class="text-sm text-blue-600 font-medium">Acquired 2021</span>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm mb-4">Producing Freedom Through Education. Operating Dental and Medical Assistant Schools Across the US.</p>
+              <a href="https://zollege.com/" target="_blank" class="text-blue-600 font-medium text-sm hover:text-blue-700">Visit site &rarr;</a>
+            </div>
+
+            <!-- CMAsnap -->
+            <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="./images/cmasnap-logo.png" alt="CMAsnap" class="w-12 h-12 object-contain">
+                <div>
+                  <h3 class="font-semibold text-slate-900">CMAsnap</h3>
+                  <span class="text-sm text-blue-600 font-medium">Launched 2022</span>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm mb-4">CMAsnap lets REALTORS produce a branded, accurate CMA from anywhere, on any device in a fraction of the time.</p>
+              <a href="https://cmasnap.com/" target="_blank" class="text-blue-600 font-medium text-sm hover:text-blue-700">Visit site &rarr;</a>
+            </div>
+
+            <!-- Paycove -->
+            <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="./images/paycove-logo.png" alt="Paycove" class="w-12 h-12 object-contain">
+                <div>
+                  <h3 class="font-semibold text-slate-900">Paycove</h3>
+                  <span class="text-sm text-blue-600 font-medium">Partnered 2023</span>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm mb-4">Automated quoting, invoicing, and payments solution that integrates seamlessly with CRM and accounting software.</p>
+              <a href="https://paycove.io" target="_blank" class="text-blue-600 font-medium text-sm hover:text-blue-700">Visit site &rarr;</a>
+            </div>
+
+            <!-- DineUp -->
+            <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="./images/dineup-logo.webp" alt="DineUp" class="w-12 h-12 object-contain">
+                <div>
+                  <h3 class="font-semibold text-slate-900">DineUp</h3>
+                  <span class="text-sm text-blue-600 font-medium">Pre-Launch</span>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm mb-4">The mission of DineUp is to revolutionize the onboard dining experience for air travelers.</p>
+              <a href="https://dineup.com" target="_blank" class="text-blue-600 font-medium text-sm hover:text-blue-700">Visit site &rarr;</a>
+            </div>
+
+            <!-- LP First Capital -->
+            <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-4 mb-4">
+                <img src="./images/lpfirstcapital-logo.png" alt="LP First Capital" class="w-12 h-12 object-contain">
+                <div>
+                  <h3 class="font-semibold text-slate-900">LP First Capital</h3>
+                  <span class="text-sm text-blue-600 font-medium">Partnered 2024</span>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm mb-4">LP First Capital is a private investment firm focused on commercial, consumer, education, and healthcare services.</p>
+              <a href="https://lpfirstcapital.com" target="_blank" class="text-blue-600 font-medium text-sm hover:text-blue-700">Visit site &rarr;</a>
+            </div>
+
+            <!-- Stealth - AI Research -->
+            <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-slate-200 rounded-lg flex items-center justify-center">
+                  <svg class="w-8 h-8 text-slate-500" viewBox="0 0 32 24" fill="currentColor">
+                    <polygon points="16,2 0,16 4,18 10,14 12,18 16,14 20,18 22,14 28,18 32,16"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-slate-900">Stealth Project</h3>
+                  <span class="text-sm text-blue-600 font-medium">Building 2025</span>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm mb-4">AI-assisted research platform helping professionals synthesize information and accelerate discovery workflows.</p>
+              <span class="text-slate-400 text-sm italic">Coming soon</span>
+            </div>
+
+            <!-- Stealth - Proptech Analytics -->
+            <div class="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-slate-200 rounded-lg flex items-center justify-center">
+                  <svg class="w-8 h-8 text-slate-500" viewBox="0 0 32 24" fill="currentColor">
+                    <polygon points="16,2 0,16 4,18 10,14 12,18 16,14 20,18 22,14 28,18 32,16"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-slate-900">Stealth Project</h3>
+                  <span class="text-sm text-blue-600 font-medium">Building 2025</span>
+                </div>
+              </div>
+              <p class="text-slate-600 text-sm mb-4">AI-powered proptech analytics platform delivering actionable insights for real estate investment decisions.</p>
+              <span class="text-slate-400 text-sm italic">Coming soon</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bio Section -->
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="order-2 lg:order-1">
+            <h2 class="text-4xl font-light mb-6 text-slate-900">Kevin Colten</h2>
+            <p class="text-lg text-slate-600 leading-relaxed mb-8">
+              A CTO with expertise in tech-enabled service companies, business intelligence,
+              and software development. Skilled in leading teams and implementing technology
+              strategies that drive business growth, improve operations, and enhance customer
+              experience. Strong background in identifying and analyzing industry trends and
+              emerging technologies to identify opportunities and stay ahead of the competition.
             </p>
-            <h2 class="mt-4">What types of companies can benefit from a CTO?</h2>
-            <p>
-              Various types of companies can benefit from a fractional CTO, including startups and
-              small businesses seeking technology leadership and guidance, mid-sized companies
-              looking to enhance their technology strategies, and even larger organizations in
-              need of specialized expertise or temporary support for specific projects.
-            </p>
+
+            <div class="space-y-4">
+              <a href="mailto:kevin@austindevs.com" class="flex items-center text-slate-700 hover:text-blue-600 transition-colors">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                kevin@austindevs.com
+              </a>
+              <a href="https://www.linkedin.com/in/kevincolten/" target="_blank" class="flex items-center text-slate-700 hover:text-blue-600 transition-colors">
+                <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                linkedin.com/in/kevincolten
+              </a>
+              <a href="https://app.reclaim.ai/m/austindevs" target="_blank" class="flex items-center text-slate-700 hover:text-blue-600 transition-colors">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                Schedule a Meeting
+              </a>
+            </div>
           </div>
-          <div class="col-lg-6">
-            <h3 class="mt-4">Why might you want a fractional CTO?</h3>
-            <div class="accordion accordion-flush" id="why-cto">
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#why-cto-1" aria-expanded="false" aria-controls="why-cto-1">
-                    Cost-effectiveness
-                  </button>
-                </h2>
-                <div id="why-cto-1" class="accordion-collapse collapse" data-bs-parent="#why-cto">
-                  <div class="accordion-body px-0">Fractional CTOs work on a part-time or project basis, allowing
-                    companies to access high-level strategic guidance and expertise without the expense of a full-time
-                    executive.</div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#why-cto-2" aria-expanded="false" aria-controls="why-cto-2">
-                    Specialized expertise
-                  </button>
-                </h2>
-                <div id="why-cto-2" class="accordion-collapse collapse" data-bs-parent="#why-cto">
-                  <div class="accordion-body px-0">Fractional CTOs often have diverse industry experience and
-                    specialized knowledge in technology strategy, innovation, and implementation. They can provide
-                    valuable insights and guidance tailored to your company's specific needs.</div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#why-cto-3" aria-expanded="false" aria-controls="why-cto-3">
-                    Scalability and flexibility
-                  </button>
-                </h2>
-                <div id="why-cto-3" class="accordion-collapse collapse" data-bs-parent="#why-cto">
-                  <div class="accordion-body px-0">Fractional CTOs can adapt to your company's changing technology needs
-                    and growth trajectory. As your organization evolves, you can adjust the level of engagement with the
-                    fractional CTO accordingly.</div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#why-cto-4" aria-expanded="false" aria-controls="why-cto-4">
-                    Strategic planning
-                  </button>
-                </h2>
-                <div id="why-cto-4" class="accordion-collapse collapse" data-bs-parent="#why-cto">
-                  <div class="accordion-body px-0">Fractional CTOs can assist in developing technology roadmaps aligned
-                    with your business goals and objectives. They can help identify opportunities for innovation,
-                    optimize technology infrastructure, and align technology initiatives with overall strategy.</div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#why-cto-5" aria-expanded="false" aria-controls="why-cto-5">
-                    Leadership and mentorship
-                  </button>
-                </h2>
-                <div id="why-cto-5" class="accordion-collapse collapse" data-bs-parent="#why-cto">
-                  <div class="accordion-body px-0">Fractional CTOs can adapt to your company's changing technology needs
-                    and growth trajectory. As your organization evolves, you can adjust the level of engagement with the
-                    fractional CTO accordingly.</div>
-                </div>
-              </div>
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#why-cto-6" aria-expanded="false" aria-controls="why-cto-6">
-                    Objective perspective
-                  </button>
-                </h2>
-                <div id="why-cto-6" class="accordion-collapse collapse" data-bs-parent="#why-cto">
-                  <div class="accordion-body px-0">As an external resource, a fractional CTO can bring fresh
-                    perspectives and objective insights to your company's technology-related decisions. They can
-                    challenge the status quo, encourage innovation, and identify potential risks and opportunities.
-                  </div>
-                </div>
-              </div>
+
+          <div class="order-1 lg:order-2">
+            <div class="aspect-square max-w-md mx-auto lg:ml-auto">
+              <img src="./images/headshot.webp" alt="Kevin Colten" class="w-full h-full object-cover">
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <section class="bg-dark py-5 text-light">
-      <div class="container">
-        <h3 class="mb-5 fs-1" id="skills">Services and Specialties</h3>
-        <div class="accordion accordion-flush" id="skills-accordion">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-web-dev" aria-expanded="false" aria-controls="skill-web-dev">
-                    Web Development
-                  </button>
-                </h2>
-                <div id="skill-web-dev" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Full-stack web application development using modern frameworks and technologies.
-                    <br><br><strong>Examples:</strong> E-commerce platforms, SaaS applications, corporate websites, web portals, progressive web apps
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-mobile-dev" aria-expanded="false" aria-controls="skill-mobile-dev">
-                    Mobile Development
-                  </button>
-                </h2>
-                <div id="skill-mobile-dev" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Native and cross-platform mobile app development for iOS and Android.
-                    <br><br><strong>Examples:</strong> Consumer apps, enterprise mobile solutions, fitness trackers, delivery apps, mobile games
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-saas" aria-expanded="false" aria-controls="skill-saas">
-                    SaaS Infrastructure
-                  </button>
-                </h2>
-                <div id="skill-saas" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Building scalable, multi-tenant SaaS platforms with robust authentication, billing, and monitoring.
-                    <br><br><strong>Examples:</strong> Subscription management systems, multi-tenant architectures, API gateways, microservices platforms
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-browser-ext" aria-expanded="false" aria-controls="skill-browser-ext">
-                    Browser Extensions
-                  </button>
-                </h2>
-                <div id="skill-browser-ext" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Custom browser extensions for Chrome, Firefox, and other browsers to enhance user experience.
-                    <br><br><strong>Examples:</strong> Productivity tools, ad blockers, password managers, shopping assistants, web scrapers
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-browser-auto" aria-expanded="false" aria-controls="skill-browser-auto">
-                    Browser Automation
-                  </button>
-                </h2>
-                <div id="skill-browser-auto" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Automated web testing, data extraction, and workflow automation using tools like Selenium and Puppeteer.
-                    <br><br><strong>Examples:</strong> Web scraping tools, automated testing suites, form fillers, data migration tools
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-hubspot" aria-expanded="false" aria-controls="skill-hubspot">
-                    HubSpot Development
-                  </button>
-                </h2>
-                <div id="skill-hubspot" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Custom HubSpot integrations, workflows, and CMS development for marketing and sales teams.
-                    <br><br><strong>Examples:</strong> Custom modules, API integrations, workflow automation, reporting dashboards, CMS themes
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-mvp" aria-expanded="false" aria-controls="skill-mvp">
-                    Prototyping and MVPs
-                  </button>
-                </h2>
-                <div id="skill-mvp" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Rapid development of minimum viable products to validate business ideas and secure funding.
-                    <br><br><strong>Examples:</strong> Proof of concepts, clickable prototypes, startup MVPs, product validation tools
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-bi" aria-expanded="false" aria-controls="skill-bi">
-                    Business Intelligence
-                  </button>
-                </h2>
-                <div id="skill-bi" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Data analytics, visualization, and reporting solutions to drive data-informed decision making.
-                    <br><br><strong>Examples:</strong> Analytics dashboards, KPI tracking systems, data warehouses, predictive analytics tools
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-chatgpt" aria-expanded="false" aria-controls="skill-chatgpt">
-                    OpenAI ChatGPT Plugins
-                  </button>
-                </h2>
-                <div id="skill-chatgpt" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Custom AI integrations and plugins leveraging OpenAI's GPT models for enhanced functionality.
-                    <br><br><strong>Examples:</strong> Chatbots, content generators, code assistants, customer support AI, document analyzers
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-offshore" aria-expanded="false" aria-controls="skill-offshore">
-                    Managing Offshore Teams
-                  </button>
-                </h2>
-                <div id="skill-offshore" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Experience in building, managing, and scaling distributed development teams across time zones.
-                    <br><br><strong>Examples:</strong> Team structuring, communication protocols, project management systems, quality assurance processes
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-opensource" aria-expanded="false" aria-controls="skill-opensource">
-                    Open Source Development
-                  </button>
-                </h2>
-                <div id="skill-opensource" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Contributing to and maintaining open source projects, building developer communities.
-                    <br><br><strong>Examples:</strong> Library development, framework contributions, developer tools, community management
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-financing" aria-expanded="false" aria-controls="skill-financing">
-                    Self-Financing Solutions
-                  </button>
-                </h2>
-                <div id="skill-financing" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Building revenue-generating features and systems that pay for themselves through efficiency gains.
-                    <br><br><strong>Examples:</strong> Automation tools, cost optimization systems, revenue enhancement features, efficiency platforms
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-salesops" aria-expanded="false" aria-controls="skill-salesops">
-                    Sales Ops, MarTech, CRMs
-                  </button>
-                </h2>
-                <div id="skill-salesops" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Implementing and optimizing sales operations tools, marketing technology, and CRM systems.
-                    <br><br><strong>Examples:</strong> Salesforce customization, marketing automation, lead scoring systems, sales analytics
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-rag" aria-expanded="false" aria-controls="skill-rag">
-                    RAG/AI Knowledge Systems
-                  </button>
-                </h2>
-                <div id="skill-rag" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Building retrieval-augmented generation systems and AI-powered knowledge management platforms.
-                    <br><br><strong>Examples:</strong> Document Q&A systems, knowledge bases, semantic search engines, AI assistants
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-edtech" aria-expanded="false" aria-controls="skill-edtech">
-                    EdTech and LMS Development
-                  </button>
-                </h2>
-                <div id="skill-edtech" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Educational technology platforms and learning management systems for schools and training programs.
-                    <br><br><strong>Examples:</strong> Online course platforms, student portals, assessment tools, virtual classrooms, certification systems
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-devops" aria-expanded="false" aria-controls="skill-devops">
-                    DevOps and Internal Systems
-                  </button>
-                </h2>
-                <div id="skill-devops" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Infrastructure automation, CI/CD pipelines, and internal tooling for development teams.
-                    <br><br><strong>Examples:</strong> Deployment pipelines, monitoring systems, infrastructure as code, internal developer platforms
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-mentoring" aria-expanded="false" aria-controls="skill-mentoring">
-                    Mentoring and Hiring Tech Talent
-                  </button>
-                </h2>
-                <div id="skill-mentoring" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Building engineering teams, technical interviewing, and mentoring developers for growth.
-                    <br><br><strong>Examples:</strong> Technical assessments, training programs, career development plans, team building strategies
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-payment" aria-expanded="false" aria-controls="skill-payment">
-                    Custom and Dynamic Payment Plans
-                  </button>
-                </h2>
-                <div id="skill-payment" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Flexible payment systems with usage-based billing, subscriptions, and custom pricing models.
-                    <br><br><strong>Examples:</strong> Tiered pricing systems, usage metering, payment gateways, billing automation, invoice generation
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-dashboards" aria-expanded="false" aria-controls="skill-dashboards">
-                    Customer Dashboards and Reporting
-                  </button>
-                </h2>
-                <div id="skill-dashboards" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Interactive dashboards and reporting tools for customers to track metrics and performance.
-                    <br><br><strong>Examples:</strong> Real-time analytics dashboards, custom report builders, data visualization tools, export features
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-tech-enabling" aria-expanded="false" aria-controls="skill-tech-enabling">
-                    Tech-Enabling Service-Based Companies
-                  </button>
-                </h2>
-                <div id="skill-tech-enabling" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Digital transformation for traditional service companies through custom software solutions.
-                    <br><br><strong>Examples:</strong> Client portals, booking systems, service management platforms, workflow automation
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-proptech" aria-expanded="false" aria-controls="skill-proptech">
-                    Prop-tech and Automated Valuation Models
-                  </button>
-                </h2>
-                <div id="skill-proptech" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Real estate technology solutions including property valuation algorithms and market analysis tools.
-                    <br><br><strong>Examples:</strong> Property valuation tools, market analysis platforms, listing management systems, investment calculators
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="accordion-item border-0">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed text-light fw-normal fs-5 ps-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#skill-wordpress" aria-expanded="false" aria-controls="skill-wordpress">
-                    Website Design and WordPress Development
-                  </button>
-                </h2>
-                <div id="skill-wordpress" class="accordion-collapse collapse" data-bs-parent="#skills-accordion">
-                  <div class="accordion-body text-light opacity-75 ps-0">
-                    Custom website design and WordPress development for businesses and organizations.
-                    <br><br><strong>Examples:</strong> Corporate websites, e-commerce stores, membership sites, custom plugins, theme development
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-slate-900 text-slate-400">
+    <div class="container mx-auto px-6 lg:px-12">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-6 text-sm">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
+          <a href="https://app.reclaim.ai/m/austindevs" target="_blank" class="hover:text-white transition-colors">Schedule</a>
+          <a href="/contact.html" class="hover:text-white transition-colors">Contact</a>
+          <a href="/fulfillment.html" class="hover:text-white transition-colors">Fulfillment</a>
         </div>
+        <span class="text-sm">Austin Devs LLC</span>
       </div>
-    </section>
-    <section class="bg-light py-5">
-      <div class="container">
-        <h3 class="mb-4 fs-1">Clients, Partners, and Projects</h3>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-          <div class="col">
-            <div class="card shadow-lg mb-3">
-              <div class="card-header">Acquired 2019</div>
-              <div class="card-body">
-                <h5 class="card-title"><a class="text-dark text-decoration-none"
-                    href="https://austincodingacademy.com/" target="_blank">
-                    <img class="h-auto" src="/images/aca-logo.webp" alt="aca-logo"
-                      style="width: 25px; padding-bottom: 3px;">&nbsp;&nbsp;Austin Coding Academy</a></h5>
-                <p class="card-text">Change Your Life With a New Career. Software Development Courses Offered In-Person
-                  and Online.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-lg mb-3">
-              <div class="card-header">Acquired 2021</div>
-              <div class="card-body">
-                <h5 class="card-title"><a class="text-dark text-decoration-none" href="https://zollege.com/" target="_blank">
-                    <img class="h-auto" src="/images/zollege-logo.png" alt="zollege-logo"
-                      style="width: 25px; padding-bottom: 3px;">&nbsp;&nbsp;Zollege</a></h5>
-                <p class="card-text">Producing Freedom Through Education. Operating Dental and Medical Assistant Schools
-                  Across the US.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-lg mb-3">
-              <div class="card-header">Launched 2022</div>
-              <div class="card-body">
-                <h5 class="card-title"><a class="text-dark text-decoration-none" href="https://cmasnap.com/" target="_blank">
-                    <img class="h-auto" src="/images/cmasnap-logo.png" alt="cmasnap-logo"
-                      style="width: 25px; padding-bottom: 3px;">&nbsp;&nbsp;CMAsnap</a></h5>
-                <p class="card-text">CMAsnap lets REALTORS produce a branded, accurate CMA from anywhere, on any device
-                  in a fraction of the time it takes using the MLS.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-lg mb-3">
-              <div class="card-header">Partnered 2023</div>
-              <div class="card-body">
-                <h5 class="card-title"><a class="text-dark text-decoration-none" href="https://paycove.io" target="_blank">
-                    <img class="h-auto" src="/images/paycove-logo.png" alt="paycove-logo"
-                      style="width: 25px; padding-bottom: 3px;">&nbsp;&nbsp;Paycove</a></h5>
-                <p class="card-text">Paycove is an automated quoting, invoicing, and payments solution that integrates
-                  seamlessly with CRM and accounting software.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-lg mb-3">
-              <div class="card-header">Pre-Launch</div>
-              <div class="card-body">
-                <h5 class="card-title"><a class="text-dark text-decoration-none" href="https://dineup.com" target="_blank">
-                    <img class="h-auto" src="/images/dineup-logo.webp" alt="dineup-logo"
-                      style="width: 25px; padding-bottom: 3px;">&nbsp;&nbsp;DineUp</a></h5>
-                <p class="card-text">The mission of DineUp is to revolutionize the onboard dining experience for air
-                  travelers.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-lg mb-3">
-              <div class="card-header">Partnered 2024</div>
-              <div class="card-body">
-                <h5 class="card-title"><a class="text-dark text-decoration-none" href="https://lpfirstcapital.com" target="_blank">
-                    <img class="h-auto" src="/images/lpfirstcapital-logo.png" alt="lpfirstcapital-logo"
-                      style="width: 25px; padding-bottom: 3px;">&nbsp;&nbsp;LP First Capital</a></h5>
-                <p class="card-text">LP First Capital is a private investment firm focused on commercial, consumer, education, and healthcare services.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="bg-dark py-5 text-light">
-      <div class="container">
-        <h3 class="mb-4 fs-1">Bio</h3>
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-8 col-lg-12">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-lg-4 rounded-start"
-                  style="background-image: url(./images/headshot.webp); background-repeat: no-repeat; background-position: top center; background-size: cover; min-height: 350px;">
-                </div>
-                <div class="col-lg-8">
-                  <h3 class="card-title ps-4 pt-4 mb-0">Kevin Colten</h3>
-                  <div class="card-body p-4">
-                    <p class="card-text">
-                      A CTO with expertise in tech-enabled service companies, business intelligence,
-                      and software development. Skilled in leading teams and implementing technology
-                      strategies that drive business growth, improve operations, and enhance customer
-                      experience. Experience in designing and building software systems and managing
-                      data analytics projects to extract insights and support decision-making. Strong
-                      background in identifying and analyzing industry trends and emerging technologies
-                      to identify opportunities and stay ahead of the competition. Proven ability to
-                      work closely with cross-functional teams, including product management,
-                      engineering, and sales, to drive innovation and achieve business objectives.
-                    </p>
-                    <p>
-                      <i class="bi bi-envelope-fill"></i> <a class="text-dark text-decoration-none"
-                        href="mailto: kevin@austindevs.com">kevin@austindevs.com</a>
-                    </p>
-                    <p>
-                      <i class="bi bi-linkedin"></i> <a class="text-dark text-decoration-none"
-                        href="https://www.linkedin.com/in/kevincolten/">linkedin.com/in/kevincolten</a>
-                    </p>
-                    <p>
-                      <i class="bi bi-calendar-event-fill"></i> <a class="text-dark text-decoration-none"
-                        href="https://app.reclaim.ai/m/austindevs">Schedule A Meeting</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <footer class="bg-dark py-3 text-light d-flex justify-content-center flex-column align-items-center">
-      <div class="mb-2">
-        <a class="text-light text-decoration-none" href="/">Home</a>
-        <span class="mx-2">|</span>
-        <a class="text-light text-decoration-none" href="https://app.reclaim.ai/m/austindevs" target="_blank">Schedule A Meeting</a>
-        <span class="mx-2">|</span>
-        <a class="text-light text-decoration-none" href="/contact.html">Contact</a>
-        <span class="mx-2">|</span>
-        <a class="text-light text-decoration-none" href="/fulfillment.html">Fulfillment Policy</a>
-      </div>
-      <span>Austin Devs LLC</span>
-    </footer>
-  </main>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-    crossorigin="anonymous"></script>
+    </div>
+  </footer>
+
+  <script>
+    function toggleService(element) {
+      const wasActive = element.classList.contains('active');
+
+      // Close all others
+      document.querySelectorAll('.service-item').forEach(item => {
+        item.classList.remove('active');
+      });
+
+      // Toggle clicked item
+      if (!wasActive) {
+        element.classList.add('active');
+      }
+    }
+
+    function toggleSection(sectionId) {
+      // Only toggle on mobile
+      if (window.innerWidth >= 768) return;
+
+      const section = document.getElementById(sectionId);
+      section.classList.toggle('active');
+    }
+
+    // Reset accordion state on resize
+    window.addEventListener('resize', function() {
+      if (window.innerWidth >= 768) {
+        document.querySelectorAll('.section-accordion').forEach(section => {
+          section.classList.remove('active');
+        });
+      }
+    });
+  </script>
 </body>
-
 </html>
