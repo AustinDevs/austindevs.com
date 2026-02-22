@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Card - Austin Devs</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            slate: {
+              850: '#1a2332',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .card {
+      width: 1050px;
+      height: 600px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    @media print {
+      body {
+        margin: 0;
+        padding: 0.5in;
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .screen-only {
+        display: none !important;
+      }
+
+      .card {
+        width: 3.5in !important;
+        height: 2in !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc;
+        margin-bottom: 0.25in;
+        position: relative;
+      }
+
+      .card .bleed-area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1050px;
+        height: 600px;
+        transform: scale(0.32);
+        transform-origin: top left;
+      }
+
+      .flex-col.items-center.gap-12 {
+        gap: 0.25in !important;
+      }
+    }
+
+    .bleed-area {
+      padding: 0.125in;
+    }
+
+    .qr-container {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      overflow: hidden;
+    }
+
+
+    .qr-container canvas {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+  </style>
+</head>
+<body class="font-sans bg-slate-100 min-h-screen">
+
+  <!-- Screen Header -->
+  <div class="screen-only py-8 text-center">
+    <h1 class="text-2xl font-light text-slate-800 mb-2">Business Card Preview</h1>
+    <p class="text-slate-500 text-sm mb-6">Print this page for actual business card size (3.5" x 2")</p>
+    <button onclick="downloadCard('front')" class="px-6 py-2 bg-slate-700 text-white font-medium hover:bg-slate-800 transition-colors">
+      Download Front
+    </button>
+    <button onclick="downloadCard('back')" class="px-6 py-2 bg-slate-700 text-white font-medium hover:bg-slate-800 transition-colors ml-2">
+      Download Back
+    </button>
+    <button onclick="window.print()" class="px-6 py-2 bg-blue-500 text-white font-medium hover:bg-blue-600 transition-colors ml-2">
+      Print Cards
+    </button>
+  </div>
+
+  <!-- Cards Container -->
+  <div class="flex flex-col items-center gap-12 py-8">
+
+    <!-- Front Side -->
+    <div class="screen-only text-sm text-slate-500 uppercase tracking-wider mb-2">Front</div>
+    <div id="card-front" class="card bg-slate-850 flex items-center justify-center">
+      <div class="bleed-area w-full h-full flex flex-col items-center justify-center text-center">
+        <img src="../images/white_logo.webp" alt="Austin Devs" class="h-24 w-auto mb-10 opacity-90">
+        <h1 class="text-white text-5xl font-extralight tracking-wide mb-4">Austin Devs</h1>
+        <p class="text-slate-400 text-2xl font-light tracking-wide">Kevin Colten</p>
+      </div>
+    </div>
+
+    <!-- Back Side -->
+    <div class="screen-only text-sm text-slate-500 uppercase tracking-wider mb-2 mt-8">Back</div>
+    <div id="card-back" class="card bg-white flex items-center justify-center">
+      <div class="bleed-area w-full h-full flex flex-col items-center justify-center">
+        <div class="flex items-center justify-center gap-28">
+          <!-- Website QR -->
+          <div class="flex flex-col items-center">
+            <span class="text-slate-600 text-lg font-light tracking-wide mb-5">Website</span>
+            <div class="qr-container">
+              <canvas id="qr-website"></canvas>
+            </div>
+          </div>
+
+          <!-- Contact vCard QR -->
+          <div class="flex flex-col items-center">
+            <span class="text-slate-600 text-lg font-light tracking-wide mb-5">Contact</span>
+            <div class="qr-container">
+              <canvas id="qr-vcard"></canvas>
+            </div>
+          </div>
+
+          <!-- Meeting QR -->
+          <div class="flex flex-col items-center">
+            <span class="text-slate-600 text-lg font-light tracking-wide mb-5">Meeting</span>
+            <div class="qr-container">
+              <canvas id="qr-meeting"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 text-center">
+          <p class="text-slate-850 text-2xl font-light tracking-wide">austindevs.com</p>
+          <img src="../images/black_logo_borderless.png" alt="" class="h-8 mx-auto mt-8">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const vCardData = 'BEGIN:VCARD\nVERSION:3.0\nN:Colten;Kevin;;;\nFN:Kevin Colten\nORG:Austin Devs\nEMAIL:kevin@austindevs.com\nTEL:+1 (512) 593-2019\nURL:https://austindevs.com\nEND:VCARD';
+
+    function downloadCard(side) {
+      const element = document.getElementById('card-' + side);
+      html2canvas(element, {
+        scale: 3,
+        useCORS: true,
+        backgroundColor: side === 'front' ? '#1a2332' : '#ffffff'
+      }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'business-card-' + side + '.jpg';
+        link.href = canvas.toDataURL('image/jpeg', 0.95);
+        link.click();
+      });
+    }
+
+    const genSize = 500;
+    const qrOptions = {
+      foreground: '#1a2332',
+      background: '#ffffff',
+      level: 'H',
+      padding: 0
+    };
+
+    const qrConfigs = {
+      'vcard': { value: vCardData, defaultSize: 189 },
+      'website': { value: 'https://austindevs.com', defaultSize: 186 },
+      'meeting': { value: 'https://austindevs.com/meeting/', defaultSize: 185 }
+    };
+
+    function generateQR(name, size) {
+      const canvas = document.getElementById('qr-' + name);
+      const container = canvas.parentElement;
+      new QRious({ element: canvas, value: qrConfigs[name].value, size: genSize, ...qrOptions });
+      canvas.style.width = size + 'px';
+      canvas.style.height = size + 'px';
+      container.style.width = size + 'px';
+      container.style.height = size + 'px';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      ['vcard', 'website', 'meeting'].forEach(name => {
+        generateQR(name, qrConfigs[name].defaultSize);
+      });
+    });
+  </script>
+</body>
+</html>
