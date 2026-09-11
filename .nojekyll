@@ -1,0 +1,3 @@
+Astro source files start with a --- block, which Jekyll would treat as front
+matter and try to render. This disables Jekyll so the current GitHub Pages
+build keeps serving the existing site untouched while the Astro rebuild lands.
