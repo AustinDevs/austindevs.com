@@ -38,9 +38,6 @@
       overflow: hidden;
       transition: max-height 0.3s ease;
     }
-    .service-item.active .service-content {
-      max-height: 200px;
-    }
     .service-item.active .service-icon {
       transform: rotate(45deg);
     }
@@ -114,22 +111,13 @@
 
       <div class="section-accordion-content md:!max-h-none">
         <div class="pt-8">
-          <div class="grid lg:grid-cols-2 gap-16">
-            <div>
-              <p class="text-lg text-slate-600 leading-relaxed">
-                A Chief Technology Officer (CTO) oversees an organization's technology needs, R&D,
-                and strategic investments to achieve objectives.
-              </p>
-            </div>
-            <div>
-              <h3 class="text-2xl font-light mb-6 text-slate-900">Who benefits from a fractional CTO?</h3>
-              <p class="text-lg text-slate-600 leading-relaxed">
-                Startups and small businesses seeking technology leadership, mid-sized companies
-                looking to enhance their technology strategies, and larger organizations in
-                need of specialized expertise or temporary support for specific projects.
-              </p>
-            </div>
-          </div>
+          <p class="text-lg text-slate-600 leading-relaxed max-w-4xl">
+            A Chief Technology Officer oversees a company's technology needs, R&D, and the strategic
+            investments that move the business forward. Bringing one on fractionally works well for startups
+            and small businesses that need technology leadership, mid-sized companies looking to sharpen their
+            technology strategy, and larger organizations that want specialized expertise or temporary support
+            on a specific project.
+          </p>
 
           <div class="mt-12 md:mt-20 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="group">
@@ -579,17 +567,28 @@
   </footer>
 
   <script>
+    // Set the panel to its exact content height so the item that is opening and the
+    // item that is closing move by the same amount at the same rate. A fixed
+    // max-height makes the closing panel lag, which bounces the section height.
+    function syncServiceHeight(item) {
+      const content = item.querySelector('.service-content');
+      if (!content) return;
+      content.style.maxHeight = item.classList.contains('active') ? content.scrollHeight + 'px' : '0px';
+    }
+
     function toggleService(element) {
       const wasActive = element.classList.contains('active');
 
       // Close all others
       document.querySelectorAll('.service-item').forEach(item => {
         item.classList.remove('active');
+        syncServiceHeight(item);
       });
 
       // Toggle clicked item
       if (!wasActive) {
         element.classList.add('active');
+        syncServiceHeight(element);
       }
     }
 
@@ -608,6 +607,9 @@
           section.classList.remove('active');
         });
       }
+
+      // Text rewraps at new widths, so remeasure whatever is open
+      document.querySelectorAll('.service-item.active').forEach(syncServiceHeight);
     });
   </script>
 </body>
