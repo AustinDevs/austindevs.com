@@ -1,0 +1,179 @@
+/* ---- themes -------------------------------------------------------------
+   The Worker stamps data-theme on <html>. Petrol is the hardcoded default
+   for anyone reaching the origin directly, and for local development.       */
+:root { --bg:#103B52; --fg:#F0E9DB; --muted:#9FBACA; --accent:#F0E9DB; --rule:#2B5A72; }
+[data-theme="ink"]        { --bg:#0A0A0A; --fg:#F2EDE4; --muted:#B8B2A8; --accent:#E8734A; --rule:#2E2C29; }
+[data-theme="royal"]      { --bg:#103A72; --fg:#F5EFE3; --muted:#C6D2E4; --accent:#E8825A; --rule:#2C5590; }
+[data-theme="mist"]       { --bg:#D6E4EE; --fg:#0F1E2E; --muted:#5B7086; --accent:#2F5C8A; --rule:#A9BFD0; }
+[data-theme="terracotta"] { --bg:#CC7B57; --fg:#3A1C10; --muted:#6B3A26; --accent:#3A1C10; --rule:#A85F3F; }
+[data-theme="soot"]       { --bg:#121212; --fg:#F0E9DC; --muted:#A8A197; --accent:#F0E9DC; --rule:#343230; }
+[data-theme="teal"]       { --bg:#0E3B42; --fg:#F3ECDE; --muted:#A9C0BF; --accent:#F3ECDE; --rule:#2A5A60; }
+[data-theme="harbor"]     { --bg:#C9DCEA; --fg:#14293A; --muted:#4E6A80; --accent:#14293A; --rule:#9DB8CC; }
+[data-theme="camel"]      { --bg:#C6A484; --fg:#3B2415; --muted:#6A4B35; --accent:#3B2415; --rule:#A5866A; }
+[data-theme="oxblood"]    { --bg:#4A1220; --fg:#F2E7DA; --muted:#C9AFA6; --accent:#F2E7DA; --rule:#6E2A38; }
+[data-theme="carbon"]     { --bg:#0B0B0B; --fg:#EFE7D8; --muted:#9C958A; --accent:#EFE7D8; --rule:#2C2A27; }
+[data-theme="petrol"]     { --bg:#103B52; --fg:#F0E9DB; --muted:#9FBACA; --accent:#F0E9DB; --rule:#2B5A72; }
+[data-theme="slate"]      { --bg:#D3E2EC; --fg:#102030; --muted:#53687C; --accent:#102030; --rule:#A6BECE; }
+[data-theme="bone"]       { --bg:#E3DCCB; --fg:#2A1B0E; --muted:#6B5B48; --accent:#6E3A1E; --rule:#C3B9A3; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Jost', system-ui, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ---- shell --------------------------------------------------------------- */
+.shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.25rem, 3.5vw, 3rem);
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.top { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+
+.brand {
+  display: inline-flex; align-items: baseline; gap: .58em;
+  font-size: clamp(.98rem, 1.5vw, 1.2rem);
+  font-weight: 500; letter-spacing: -0.01em; white-space: nowrap;
+}
+.brand svg { height: .70em; height: 1cap; width: auto; flex: none; overflow: visible; }
+.mark { fill: none; stroke: currentColor; stroke-width: 6.4; stroke-linecap: butt; stroke-linejoin: miter; }
+@media (min-resolution: 1.5dppx) { .mark { stroke-width: 5.4; } }
+
+.nav { display: flex; gap: clamp(.85rem, 2.2vw, 2rem); }
+.nav a, .foot a, .meta {
+  font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+  transition: color .15s;
+}
+.nav a:hover, .foot a:hover { color: var(--fg); }
+.nav a[aria-current="page"] { color: var(--fg); }
+
+.foot {
+  border-top: 1px solid var(--rule);
+  padding-top: .9rem;
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+}
+.foot nav { display: flex; gap: clamp(.85rem, 2vw, 1.75rem); margin-left: auto; }
+
+/* ---- type ---------------------------------------------------------------- */
+h1 { margin: 0; font-weight: 500; line-height: .94; letter-spacing: -0.035em; }
+.display { font-size: clamp(2.6rem, 9vw, 8rem); }
+.page-title { font-size: clamp(2rem, 5.5vw, 3.75rem); }
+.role { margin: clamp(.8rem,2vw,1.5rem) 0 0; font-size: clamp(1rem, 2.3vw, 1.8rem); font-weight: 300; }
+.pitch { margin: .85rem 0 0; max-width: 34ch; color: var(--muted); font-weight: 300; line-height: 1.5; }
+.lede { max-width: 52ch; color: var(--muted); font-weight: 300; line-height: 1.55; margin: 1rem 0 0; }
+.links { display: flex; flex-wrap: wrap; gap: clamp(.9rem, 3vw, 2.5rem); margin-top: clamp(1.5rem, 4vw, 2.75rem); }
+.links a { font-size: clamp(.9rem, 1.4vw, 1.05rem); }
+.links a:hover { color: var(--accent); }
+
+/* ---- the rail -------------------------------------------------------------
+   With JS on, every route's content lives in one horizontal scroll-snap rail
+   so a thumb can drag between pages. With JS off the <noscript> block in the
+   layout collapses the rail to the current page only.                        */
+.rail {
+  flex: 1;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  gap: clamp(1.25rem, 3.5vw, 3rem);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.rail::-webkit-scrollbar { display: none; }
+.panel { scroll-snap-align: start; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+.panel > .inner { max-width: 64rem; width: 100%; }
+
+/* ---- categories: two level drill down, zero JS -----------------------------
+   details[name] gives native single-open accordion behaviour.               */
+.cats { margin-top: clamp(1.5rem, 4vw, 2.5rem); border-top: 1px solid var(--rule); }
+.cat { border-bottom: 1px solid var(--rule); }
+.cat > summary {
+  list-style: none; cursor: pointer;
+  padding: clamp(.7rem, 1.6vw, 1.05rem) 0;
+  display: flex; align-items: baseline; gap: 1rem;
+}
+.cat > summary::-webkit-details-marker { display: none; }
+.cat > summary h2 { margin: 0; font-size: clamp(1.1rem, 2.4vw, 1.7rem); font-weight: 400; letter-spacing: -0.02em; }
+.cat > summary .blurb { color: var(--muted); font-size: .85rem; font-weight: 300; margin-left: auto; text-align: right; }
+.cat > summary::after { content: "+"; color: var(--muted); font-size: 1.1rem; width: 1ch; }
+.cat[open] > summary::after { content: "\2212"; color: var(--fg); }
+.cat[open] > summary h2 { color: var(--fg); }
+
+.svc { border-top: 1px solid var(--rule); margin-left: clamp(0rem, 4vw, 3rem); }
+.svc > summary { list-style: none; cursor: pointer; padding: .55rem 0; color: var(--muted); font-size: .95rem; font-weight: 300; }
+.svc > summary::-webkit-details-marker { display: none; }
+.svc[open] > summary { color: var(--fg); }
+.svc p { margin: 0 0 .85rem; color: var(--muted); font-size: .88rem; font-weight: 300; line-height: 1.5; max-width: 58ch; }
+.cat > div { padding-bottom: .8rem; }
+
+/* ---- projects ------------------------------------------------------------- */
+.projects { margin-top: clamp(1.5rem,4vw,2.5rem); border-top: 1px solid var(--rule); }
+.project { border-bottom: 1px solid var(--rule); padding: clamp(.8rem,1.8vw,1.15rem) 0;
+           display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .35rem 1.5rem; align-items: baseline; }
+.project h2 { margin: 0; font-size: clamp(1.05rem,2.2vw,1.45rem); font-weight: 400; letter-spacing: -0.02em; }
+.project .status { color: var(--muted); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+.project p { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: .9rem; font-weight: 300; max-width: 60ch; }
+
+/* ---- prose ---------------------------------------------------------------- */
+.prose { max-width: 62ch; }
+.prose h2 { font-size: clamp(1.05rem,2.2vw,1.35rem); font-weight: 500; letter-spacing: -0.02em; margin: 2rem 0 .5rem; }
+.prose p, .prose li { color: var(--muted); font-weight: 300; line-height: 1.6; font-size: .95rem; }
+.prose a { color: var(--fg); border-bottom: 1px solid var(--rule); }
+.prose ul { padding-left: 1.1rem; }
+
+/* ---- form ----------------------------------------------------------------- */
+.form { max-width: 34rem; margin-top: clamp(1.25rem,3vw,2rem); display: grid; gap: 1.1rem; }
+.field { display: grid; gap: .4rem; }
+.field label { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.field input, .field textarea {
+  font: inherit; font-weight: 300; color: var(--fg);
+  background: transparent; border: 0; border-bottom: 1px solid var(--rule);
+  padding: .5rem 0; border-radius: 0;
+}
+.field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--fg); }
+.field textarea { resize: vertical; min-height: 6.5rem; }
+button {
+  font: inherit; font-weight: 400; letter-spacing: .06em;
+  color: var(--bg); background: var(--fg);
+  border: 0; padding: .7rem 1.4rem; cursor: pointer; justify-self: start;
+}
+button:disabled { opacity: .55; cursor: default; }
+.note { color: var(--muted); font-size: .8rem; font-weight: 300; }
+
+/* ---- page transitions, no JS required ------------------------------------- */
+@view-transition { navigation: auto; }
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(pagehead) { animation: slide-out-left .28s ease both; }
+  ::view-transition-new(pagehead) { animation: slide-in-right .28s ease .06s both; }
+  ::view-transition-old(pagebody) { animation: slide-out-right .28s ease both; }
+  ::view-transition-new(pagebody) { animation: slide-in-left .28s ease .12s both; }
+}
+@keyframes slide-out-left  { to { transform: translateX(-6%); opacity: 0; } }
+@keyframes slide-out-right { to { transform: translateX(6%);  opacity: 0; } }
+@keyframes slide-in-right  { from { transform: translateX(6%);  opacity: 0; } }
+@keyframes slide-in-left   { from { transform: translateX(-6%); opacity: 0; } }
+
+/* ---- responsive ----------------------------------------------------------- */
+@media (max-width: 40rem) and (orientation: portrait) {
+  .nav { gap: .75rem; }
+  .nav a, .foot a { font-size: .62rem; letter-spacing: .08em; }
+  .pitch { max-width: none; }
+  .cat > summary .blurb { display: none; }
+}
+@media (max-height: 30rem) and (orientation: landscape) {
+  .shell { gap: .8rem; padding: .9rem 1.4rem; }
+  .display { font-size: clamp(1.9rem, 8.5vh, 3.6rem); }
+  .role { font-size: 1rem; margin-top: .4rem; }
+  .pitch { display: none; }
+  .links { margin-top: .9rem; }
+}
