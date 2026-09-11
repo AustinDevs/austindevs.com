@@ -1,0 +1,49 @@
+---
+import '../styles/theme.css';
+import Brand from '../components/Brand.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../data/site';
+
+const { title, description, path } = Astro.props;
+const full = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${SITE.role}`;
+const canonical = new URL(path, SITE.origin).href;
+---
+<!doctype html>
+<html lang="en" data-theme="petrol">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{full}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" href="/logo-mark.svg" type="image/svg+xml" />
+  <meta property="og:title" content={full} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <noscript><style>
+    /* No JS: the rail collapses, only this route's panel is shown, and
+       navigation falls back to normal cross document view transitions. */
+    .rail { display: block; overflow: visible; }
+    .panel[data-route]:not([data-current]) { display: none; }
+  </style></noscript>
+</head>
+<body>
+  <div class="shell">
+    <div class="top" style="view-transition-name: pagehead">
+      <Brand />
+      <Nav path={path} />
+    </div>
+
+    <main class="rail" id="rail" style="view-transition-name: pagebody">
+      <slot />
+    </main>
+
+    <Footer />
+  </div>
+</body>
+</html>

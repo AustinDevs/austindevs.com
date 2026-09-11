@@ -1,0 +1,22 @@
+---
+import Base from '../layouts/Base.astro';
+import { PROJECTS } from '../data/site';
+---
+<Base path="/projects" title="Projects"
+      description="Companies built, launched, partnered with, and acquired.">
+  <section class="panel" data-route="/projects" data-current>
+    <div class="inner">
+      <h1 class="page-title">Projects</h1>
+      <p class="lede">Companies built, launched, partnered with, and acquired.</p>
+      <div class="projects">
+        {PROJECTS.map(p => (
+          <article class="project">
+            <h2><a href={p.url}>{p.name}</a></h2>
+            <span class="status">{p.status}</span>
+            <p>{p.blurb}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

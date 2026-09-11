@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import { CATEGORIES } from '../data/site';
+---
+<Base path="/services" title="Services"
+      description="Technical leadership, applied AI, product engineering, platform, revenue operations, and sector experience.">
+  <section class="panel" data-route="/services" data-current>
+    <div class="inner">
+      <h1 class="page-title">Services</h1>
+      <p class="lede">Six areas. Open one to see what sits inside it, then open a line to see what it actually means in practice.</p>
+      <div class="cats">
+        {CATEGORIES.map(cat => (
+          <details class="cat" name="cat" id={cat.slug}>
+            <summary>
+              <h2>{cat.title}</h2>
+              <span class="blurb">{cat.blurb}</span>
+            </summary>
+            <div>
+              {cat.items.map(([name, detail]) => (
+                <details class="svc" name={cat.slug}>
+                  <summary>{name}</summary>
+                  <p>{detail}</p>
+                </details>
+              ))}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

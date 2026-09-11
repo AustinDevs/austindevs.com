@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+---
+<Base path="/" title={null}
+      description={`${SITE.name}, ${SITE.role}. ${SITE.pitch}`}>
+  <section class="panel" data-route="/" data-current>
+    <div class="inner">
+      <h1 class="display">{SITE.name}</h1>
+      <p class="role">{SITE.role}</p>
+      <p class="pitch">{SITE.pitch}</p>
+      <div class="links">
+        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        <a href={SITE.linkedin}>LinkedIn</a>
+        <a href={SITE.schedule}>Schedule a conversation</a>
+      </div>
+    </div>
+  </section>
+</Base>
