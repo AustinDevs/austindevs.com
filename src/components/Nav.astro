@@ -1,0 +1,9 @@
+---
+import { NAV } from '../data/site';
+const { path } = Astro.props;
+---
+<nav class="nav">
+  {NAV.map(item => (
+    <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
+  ))}
+</nav>

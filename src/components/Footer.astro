@@ -1,0 +1,9 @@
+---
+import { FOOTER, SITE } from '../data/site';
+---
+<footer class="foot">
+  <span class="meta">{SITE.legal}</span>
+  <nav>
+    {FOOTER.map(item => <a href={item.href}>{item.label}</a>)}
+  </nav>
+</footer>

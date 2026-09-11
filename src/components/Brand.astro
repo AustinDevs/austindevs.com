@@ -1,0 +1,8 @@
+---
+import Mark from './Mark.astro';
+import { SITE } from '../data/site';
+---
+<a class="brand" href="/" aria-label={SITE.company}>
+  <Mark />
+  <span>{SITE.company}</span>
+</a>
