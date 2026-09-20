@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 import { SITE } from '../data/site';
 
 const { title, description, path } = Astro.props;
-const full = title ? `${title} — ${SITE.name}` : `${SITE.name} — ${SITE.role}`;
+const full = title ? `${title} \u2014 ${SITE.name}` : `${SITE.name} \u2014 ${SITE.role}`;
 const canonical = new URL(path, SITE.origin).href;
 ---
 <!doctype html>
@@ -45,5 +45,6 @@ const canonical = new URL(path, SITE.origin).href;
 
     <Footer />
   </div>
+  <script src="../scripts/rail.js"></script>
 </body>
 </html>

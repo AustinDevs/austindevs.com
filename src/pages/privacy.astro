@@ -1,0 +1,92 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+const updated = 'September 11, 2026';
+---
+<Base path="/privacy" title="Privacy"
+      description="What Austin Devs collects on this site and in its apps, and what it does not.">
+  <section class="panel" data-route="/privacy" data-current>
+    <div class="inner prose">
+      <h1 class="page-title">Privacy</h1>
+      <p class="lede">
+        This covers austindevs.com and the applications built and owned by {SITE.legal}. The short version:
+        very little is collected, none of it is sold, and none of it is used to build a profile of you.
+      </p>
+      <p class="note">Last updated {updated}</p>
+
+      <h2>This website</h2>
+      <p>
+        Analytics are handled by Google Analytics with its default configuration. That means Google collects
+        the usual measurement data, including a device identifier, approximate location derived from IP
+        address, pages viewed, and referrer. No custom identifiers, no marketing pixels, and no cross-site
+        advertising integrations are added on top of it.
+      </p>
+      <p>
+        A single functional cookie named <code>ad_theme</code> stores which of the site's color themes you
+        were shown, so the site looks the same when you come back. It holds one short word, nothing about
+        you, and clearing it simply picks a new theme.
+      </p>
+
+      <h2>The contact form</h2>
+      <p>
+        The form collects your name, email address, and your message, and sends them by email so they can be
+        read and replied to. They are not added to a marketing list and no newsletter follows.
+      </p>
+      <p>
+        The form is protected by Cloudflare Turnstile, which runs in invisible mode and checks that the
+        submission comes from a person rather than a script. Cloudflare processes data for this purpose as
+        described in the <a href="https://www.cloudflare.com/en-gb/turnstile-privacy-policy/">Cloudflare
+        Turnstile Privacy Addendum</a>. Turnstile does not use this data for advertising or cross-site
+        tracking.
+      </p>
+
+      <h2>Applications</h2>
+      <p>
+        {SITE.legal} builds and operates a number of applications, and this policy applies to those owned by
+        {SITE.legal}. The set changes over time, so it is not enumerated here; each application identifies
+        its operator in its own interface.
+      </p>
+      <p>
+        Where an application has accounts, it holds the details needed to run it, typically a name and an
+        email address, along with whatever content you choose to put into it. That content belongs to you.
+        It is not sold, rented, or shared for anyone else's marketing, and it is not used to train models
+        for third parties.
+      </p>
+      <p>
+        Applications built for a client under contract are operated by that client, and their own privacy
+        policy applies rather than this one.
+      </p>
+
+      <h2>Service providers</h2>
+      <p>
+        Running any of this involves a small number of vendors acting on instructions: hosting and network
+        providers, email delivery, and the analytics and bot protection described above. They receive only
+        what they need to perform their function.
+      </p>
+
+      <h2>Retention</h2>
+      <p>
+        Contact form messages are kept as ordinary email correspondence for as long as they are useful.
+        Application data is kept while the account exists. Analytics retention follows Google Analytics'
+        own default settings.
+      </p>
+
+      <h2>Your choices</h2>
+      <p>
+        You can ask what is held about you, ask for it to be corrected, or ask for it to be deleted, and
+        that request will be honored where there is no legal reason to keep it. Analytics can be blocked with
+        the Google Analytics opt-out add-on or any content blocker, and the site works normally without it.
+        The theme cookie can be cleared at any time in your browser.
+      </p>
+
+      <h2>Children</h2>
+      <p>None of this is directed at children under 13, and information is not knowingly collected from them.</p>
+
+      <h2>Changes</h2>
+      <p>If this policy changes materially, the date above changes with it.</p>
+
+      <h2>Contact</h2>
+      <p>Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+    </div>
+  </section>
+</Base>

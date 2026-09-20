@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+---
+<Base path="/fulfillment" title="Fulfillment"
+      description="How Austin Devs engagements are scoped, delivered, billed, and ended.">
+  <section class="panel" data-route="/fulfillment" data-current>
+    <div class="inner prose">
+      <h1 class="page-title">Fulfillment</h1>
+      <p class="lede">What you are buying, how it gets delivered, and how it ends. Written plainly rather than as boilerplate.</p>
+
+      <h2>What is sold</h2>
+      <p>
+        {SITE.legal} sells professional services: technology strategy, engineering leadership, software
+        development, and the related advisory work described on the services page. Nothing here is a
+        physical product, and there is no shipping involved. Deliverables are things like working software,
+        source code in your own repositories, architecture and diligence documents, and time in meetings.
+      </p>
+
+      <h2>How an engagement starts</h2>
+      <p>
+        Every engagement starts with a conversation, not an order form. Scope, rate, and cadence are agreed
+        in writing first, whether that is a statement of work, a consulting agreement, or an email that both
+        sides confirm. Work does not begin before that exists.
+      </p>
+
+      <h2>Shapes of engagement</h2>
+      <ul>
+        <li><strong>Fractional CTO.</strong> A recurring monthly commitment for a set number of days or hours, billed monthly.</li>
+        <li><strong>Project work.</strong> A defined deliverable with a fixed fee or an estimated range, billed at agreed milestones.</li>
+        <li><strong>Advisory and diligence.</strong> Short bounded engagements, usually billed on completion.</li>
+      </ul>
+
+      <h2>Delivery</h2>
+      <p>
+        Code is delivered into your repositories and your infrastructure as it is written, not held back until
+        the end. Documents are delivered in editable formats you keep. Timelines are agreed per engagement and
+        kept current in writing when they change, which on real projects they sometimes do.
+      </p>
+
+      <h2>Billing</h2>
+      <p>
+        Invoices are issued electronically and are due on the terms stated on the invoice, ordinarily net 15.
+        Recurring engagements are billed monthly in advance unless agreed otherwise. Applicable taxes are added
+        where required.
+      </p>
+
+      <h2>Changes, pausing, and cancellation</h2>
+      <p>
+        Recurring engagements can be ended by either side with 30 days written notice. Project work can be
+        stopped at any point; you are billed for work completed to that date and you keep everything produced
+        up to it. Scope changes are agreed in writing before the work that depends on them starts.
+      </p>
+
+      <h2>Refunds</h2>
+      <p>
+        Fees for work already performed are not refundable, because the work has been delivered and is yours to
+        keep. Amounts paid in advance for work not yet performed are refunded in full when an engagement ends.
+        If something delivered is not what was agreed, the first remedy is to put it right; raise it and it gets
+        addressed.
+      </p>
+
+      <h2>Ownership</h2>
+      <p>
+        On payment, work product created specifically for you is yours. Pre-existing tools, libraries, and general
+        know-how brought to the engagement remain owned by {SITE.legal}, licensed to you for use in what was
+        delivered. Anything more specific is set out in the engagement agreement, which takes precedence over
+        this page.
+      </p>
+
+      <h2>Questions</h2>
+      <p>Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+    </div>
+  </section>
+</Base>
