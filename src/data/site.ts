@@ -3,7 +3,6 @@ export const SITE = {
   company: 'Austin Devs',
   legal: 'Austin Devs LLC',
   role: 'Technical Cofounder and Fractional CTO',
-  pitch: 'Ship the right thing, not the next thing.',
   email: 'kevin@austindevs.com',
   linkedin: 'https://www.linkedin.com/in/kevincolten/',
   schedule: 'https://app.reclaim.ai/m/austindevs',
