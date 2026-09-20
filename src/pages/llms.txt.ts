@@ -2,7 +2,7 @@ import { SITE, CATEGORIES, PROJECTS } from '../data/site';
 
 const body = `# ${SITE.name}
 
-> ${SITE.role} at ${SITE.company}. ${SITE.pitch}
+> ${SITE.role} at ${SITE.company}.
 
 ${SITE.name} runs ${SITE.legal}, a consulting practice offering fractional CTO and
 technical cofounder work. Contact: ${SITE.email}
