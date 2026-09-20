@@ -1,25 +1,26 @@
 ---
 import Base from '../layouts/Base.astro';
 import { SITE } from '../data/site';
+import headshot from '../../images/headshot.webp';
 ---
 <Base path="/about" title="About"
       description="Kevin Colten is a CTO working in tech-enabled services, business intelligence, and software development.">
   <section class="panel" data-route="/about" data-current>
-    <div class="inner prose">
-      <h1 class="page-title">About</h1>
-      <p class="lede">
-        A CTO with expertise in tech-enabled service companies, business intelligence, and software
-        development. Skilled in leading teams and implementing technology strategies that drive business
-        growth, improve operations, and enhance customer experience.
-      </p>
-      <p>
-        Austin Devs is the practice. Work runs from a standing fractional CTO seat through to
-        single projects, and has included companies through acquisition on both sides of the table.
-      </p>
-      <div class="links">
-        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
-        <a href={SITE.linkedin}>LinkedIn</a>
-        <a href={SITE.schedule}>Schedule a conversation</a>
+    <div class="inner about">
+      <img class="headshot" src={headshot.src} width={headshot.width} height={headshot.height}
+           alt={SITE.name} loading="lazy" decoding="async" />
+      <div class="about-copy">
+        <h1 class="page-title">About {SITE.name}</h1>
+        <p class="lede">
+          A CTO with expertise in tech-enabled service companies, business intelligence, and software
+          development. Skilled in leading teams and implementing technology strategies that drive business
+          growth, improve operations, and enhance customer experience.
+        </p>
+        <div class="links">
+          <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+          <a href={SITE.linkedin}>LinkedIn</a>
+          <a href={SITE.schedule}>Schedule a conversation</a>
+        </div>
       </div>
     </div>
   </section>
