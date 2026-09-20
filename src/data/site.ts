@@ -2,7 +2,7 @@ export const SITE = {
   name: 'Kevin Colten',
   company: 'Austin Devs',
   legal: 'Austin Devs LLC',
-  role: 'Technical Cofounder and CTO',
+  role: 'Technical Cofounder and Fractional CTO',
   pitch: 'Ship the right thing, not the next thing.',
   email: 'kevin@austindevs.com',
   linkedin: 'https://www.linkedin.com/in/kevincolten/',
@@ -16,6 +16,8 @@ export const NAV = [
   { href: '/about',    label: 'About' },
   { href: '/contact',  label: 'Contact' }
 ];
+
+export const ROUTES = ['/', '/services', '/projects', '/about', '/contact'];
 
 export const FOOTER = [
   { href: '/fulfillment', label: 'Fulfillment' },
@@ -103,8 +105,8 @@ export const PROJECTS = [
     blurb: 'Branded, accurate comparative market analyses for realtors, from any device.' },
   { name: 'Paycove', status: 'Partnered 2023', url: 'https://paycove.io',
     blurb: 'Automated quoting, invoicing, and payments wired into CRM and accounting software.' },
-  { name: 'DineUp', status: 'Acquired 2026', url: 'https://dineup.com',
-    blurb: 'Onboard dining for air travelers.' },
   { name: 'LP First Capital', status: 'Partnered 2024 to 2026', url: 'https://lpfirstcapital.com',
-    blurb: 'Private investment firm focused on commercial, consumer, education, and healthcare services.' }
+    blurb: 'Private investment firm focused on commercial, consumer, education, and healthcare services.' },
+  { name: 'DineUp', status: 'Acquired 2026', url: 'https://dineup.com',
+    blurb: 'Onboard dining for air travelers.' }
 ];

@@ -37,7 +37,8 @@ a { color: inherit; text-decoration: none; }
   gap: clamp(1.25rem, 3vw, 2rem);
 }
 
-.top { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: clamp(.75rem, 3vw, 1.5rem); }
+.top > * { min-width: 0; }
 
 .brand {
   display: inline-flex; align-items: baseline; gap: .58em;
@@ -48,7 +49,7 @@ a { color: inherit; text-decoration: none; }
 .mark { fill: none; stroke: currentColor; stroke-width: 6.4; stroke-linecap: butt; stroke-linejoin: miter; }
 @media (min-resolution: 1.5dppx) { .mark { stroke-width: 5.4; } }
 
-.nav { display: flex; gap: clamp(.85rem, 2.2vw, 2rem); }
+.nav { display: flex; align-items: center; gap: clamp(.6rem, 2.2vw, 2rem); flex-shrink: 1; }
 .nav a, .foot a, .meta {
   font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
   transition: color .15s;
@@ -75,7 +76,7 @@ h1 { margin: 0; font-weight: 500; line-height: .94; letter-spacing: -0.035em; }
 .links a:hover { color: var(--accent); }
 
 /* ---- the rail -------------------------------------------------------------
-   With JS on, every route's content lives in one horizontal scroll-snap rail
+   With JS on, every route's content lives in one horizontal scroll snap rail
    so a thumb can drag between pages. With JS off the <noscript> block in the
    layout collapses the rail to the current page only.                        */
 .rail {
@@ -163,10 +164,20 @@ button:disabled { opacity: .55; cursor: default; }
 @keyframes slide-in-right  { from { transform: translateX(6%);  opacity: 0; } }
 @keyframes slide-in-left   { from { transform: translateX(-6%); opacity: 0; } }
 
+/* ---- about ---------------------------------------------------------------- */
+.about { display: grid; grid-template-columns: minmax(0, 18rem) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+.about-copy { max-width: 46ch; }
+.headshot { width: 100%; height: auto; display: block; filter: grayscale(1); }
+
 /* ---- responsive ----------------------------------------------------------- */
+@media (max-width: 48rem) {
+  .about { grid-template-columns: minmax(0, 1fr); }
+  .headshot { max-width: 12rem; }
+}
 @media (max-width: 40rem) and (orientation: portrait) {
-  .nav { gap: .75rem; }
-  .nav a, .foot a { font-size: .62rem; letter-spacing: .08em; }
+  .brand { font-size: .92rem; gap: .5em; }
+  .nav { gap: .62rem; }
+  .nav a, .foot a { font-size: .58rem; letter-spacing: .06em; white-space: nowrap; }
   .pitch { max-width: none; }
   .cat > summary .blurb { display: none; }
 }
@@ -176,4 +187,5 @@ button:disabled { opacity: .55; cursor: default; }
   .role { font-size: 1rem; margin-top: .4rem; }
   .pitch { display: none; }
   .links { margin-top: .9rem; }
+  .headshot { max-width: 7rem; }
 }
