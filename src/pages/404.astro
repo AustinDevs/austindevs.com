@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE, NAV } from '../data/site';
+---
+<Base path="/404" title="Not found"
+      description="That page does not exist.">
+  <section class="panel" data-route="/404" data-current>
+    <div class="inner">
+      <h1 class="page-title">Not found</h1>
+      <p class="lede">That page does not exist, or it moved when the site was rebuilt.</p>
+      <div class="links">
+        <a href="/">Home</a>
+        {NAV.map(item => <a href={item.href}>{item.label}</a>)}
+      </div>
+      <p class="note" style="margin-top:2rem">
+        If you followed a link from somewhere, email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> and it will get fixed.
+      </p>
+    </div>
+  </section>
+</Base>
