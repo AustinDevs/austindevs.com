@@ -4,9 +4,11 @@
 // the URL follows. With JS off none of this runs and normal links apply.
 import { ROUTES } from '../data/site';
 
+// Pages outside ROUTES, like /privacy and /fulfillment, stand alone and never
+// join the rail, or re-laying it would drop their panel and page back to /.
 const rail = document.getElementById('rail');
-if (rail && 'IntersectionObserver' in window) {
-  const here = document.querySelector('.panel[data-current]')?.dataset.route;
+const here = document.querySelector('.panel[data-current]')?.dataset.route;
+if (rail && ROUTES.includes(here) && 'IntersectionObserver' in window) {
   const titles = new Map([[here, document.title]]);
   let jumping = false;
 
