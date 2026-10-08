@@ -166,7 +166,8 @@ button:disabled { opacity: .55; cursor: default; }
 
 /* ---- about ---------------------------------------------------------------- */
 .about { display: grid; grid-template-columns: minmax(0, 18rem) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
-.about-copy { max-width: 46ch; }
+/* The measure applies to the prose only, so the links can share one line like the other pages. */
+.about-copy > :not(.links) { max-width: 46ch; }
 .headshot { width: 100%; height: auto; display: block; filter: grayscale(1); }
 
 /* ---- responsive ----------------------------------------------------------- */

@@ -5,7 +5,7 @@ export const SITE = {
   role: 'Technical Cofounder and Fractional CTO',
   email: 'kevin@austindevs.com',
   linkedin: 'https://www.linkedin.com/in/kevincolten/',
-  schedule: 'https://app.reclaim.ai/m/austindevs',
+  schedule: 'https://calendar.app.google/SQtYCq7yDoogKCN87',
   origin: 'https://austindevs.com'
 };
 
