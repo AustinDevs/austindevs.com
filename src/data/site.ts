@@ -96,7 +96,7 @@ export const CATEGORIES = [
 ];
 
 export const PROJECTS = [
-  { name: 'Austin Coding Academy', status: 'Acquired 2019', url: 'https://austincodingacademy.com/',
+  { name: 'Austin Coding Academy', status: 'Acquired 2019',
     blurb: 'Software development courses offered in person and online.' },
   { name: 'Zollege', status: 'Acquired 2021', url: 'https://zollege.com/',
     blurb: 'Dental and medical assistant schools operating across the US.' },
