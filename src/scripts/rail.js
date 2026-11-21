@@ -39,15 +39,21 @@ if (rail && ROUTES.includes(here) && 'IntersectionObserver' in window) {
     if (!built.size) return;
 
     // Re-lay the rail in route order, keeping the existing panel in place.
+    // With the rail on, the shell is pinned to the viewport and each panel
+    // scrolls on its own, so the nav never leaves the screen. Carry over any
+    // scroll the visitor already did on this page.
     const current = rail.querySelector('.panel[data-current]');
     const ordered = ROUTES.map((r) => (r === here ? current : built.get(r))).filter(Boolean);
+    const y = window.scrollY;
     jumping = true;
+    document.documentElement.dataset.rail = 'on';
     rail.replaceChildren(...ordered);
-    current.scrollIntoView({ block: 'nearest', inline: 'start' });
+    window.scrollTo(0, 0);
+    slideTo(current);
+    current.scrollTop = y;
     requestAnimationFrame(() => { jumping = false; });
 
     watch();
-    document.documentElement.dataset.rail = 'on';
   });
 
   function settle(route) {
@@ -73,6 +79,12 @@ if (rail && ROUTES.includes(here) && 'IntersectionObserver' in window) {
     rail.querySelectorAll('.panel[data-route]').forEach((p) => io.observe(p));
   }
 
+  // Scroll the rail sideways only. scrollIntoView would also scroll the
+  // window vertically and push the nav off the top on phones.
+  function slideTo(panel, smooth) {
+    rail.scrollTo({ left: panel.offsetLeft, behavior: smooth ? 'smooth' : 'instant' });
+  }
+
   function panelFor(route) {
     return rail.querySelector(`.panel[data-route="${CSS.escape(route)}"]`);
   }
@@ -83,7 +95,7 @@ if (rail && ROUTES.includes(here) && 'IntersectionObserver' in window) {
     const panel = panelFor(a.getAttribute('href'));
     if (!panel) return;
     e.preventDefault();
-    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    slideTo(panel, true);
     settle(a.getAttribute('href'));
   });
 
@@ -91,7 +103,7 @@ if (rail && ROUTES.includes(here) && 'IntersectionObserver' in window) {
     const panel = panelFor(location.pathname);
     if (!panel) return;
     jumping = true;
-    panel.scrollIntoView({ block: 'nearest', inline: 'start' });
+    slideTo(panel);
     if (titles.has(location.pathname)) document.title = titles.get(location.pathname);
     requestAnimationFrame(() => { jumping = false; });
   });

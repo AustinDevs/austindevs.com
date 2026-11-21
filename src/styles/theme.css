@@ -81,6 +81,7 @@ h1 { margin: 0; font-weight: 500; line-height: .94; letter-spacing: -0.035em; }
    layout collapses the rail to the current page only.                        */
 .rail {
   flex: 1;
+  position: relative; /* panels measure offsetLeft from the rail */
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 100%;
@@ -93,6 +94,19 @@ h1 { margin: 0; font-weight: 500; line-height: .94; letter-spacing: -0.035em; }
 .rail::-webkit-scrollbar { display: none; }
 .panel { scroll-snap-align: start; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
 .panel > .inner { max-width: 64rem; width: 100%; }
+
+/* Once rail.js has slotted in every route, the shell fills exactly one screen
+   and each panel scrolls vertically on its own. Without this the rail grows to
+   the tallest page, the short pages float in empty space, and the nav scrolls
+   away. Auto margins centre short content without clipping long content. */
+[data-rail="on"] .shell { height: 100dvh; }
+[data-rail="on"] .rail { min-height: 0; }
+[data-rail="on"] .panel {
+  overflow-y: auto; overscroll-behavior-y: contain;
+  justify-content: flex-start; scrollbar-width: none;
+}
+[data-rail="on"] .panel::-webkit-scrollbar { display: none; }
+[data-rail="on"] .panel > .inner { margin-block: auto; }
 
 /* ---- categories: two level drill down, zero JS -----------------------------
    details[name] gives native single-open accordion behaviour.               */
